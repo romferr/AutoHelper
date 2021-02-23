@@ -116,21 +116,58 @@ public class GreatWesternTrail extends AppCompatActivity {
         });
     }
 
-    //TODO
-//    @Override
-//    protected void onSaveInstanceState (Bundle b) {
-//        super.onSaveInstanceState(b);
-//        b.putStringArrayList("deck", deckAutoma);
-//        b.putInt("difficulty", difficulty);
-//        b.putInt("index", index);
-//    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        // Save the user's current game state
+        savedInstanceState.putStringArrayList("deckAutoma", deckAutoma);
+        savedInstanceState.putInt("difficulty", difficulty);
+        savedInstanceState.putString("textCard", cardText.getText().toString());
 
+        // Always call the superclass so it can save the view hierarchy state
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        // Always call the superclass so it can restore the view hierarchy
+        super.onRestoreInstanceState(savedInstanceState);
+
+        // Restore state members from saved instance
+        deckAutoma = savedInstanceState.getStringArrayList("deckAutoma");
+        party = savedInstanceState.getBoolean("party");
+        difficulty = savedInstanceState.getInt("difficulty");
+        String textCard = savedInstanceState.getString("textCard");
+
+        next.setVisibility(View.VISIBLE);
+        difficultyBlock.setVisibility(View.GONE);
+        textBlockforCards.setVisibility(View.VISIBLE);
+        cardsLeftBlock.setVisibility(View.VISIBLE);
+
+        cardLeft.setText(String.valueOf(deckAutoma.size()));
+        maxsize.setText(" /" + (16 - difficulty));
+        cardText.setText(textCard);
+        next.setText("Next Turn");
+
+
+    }
 
     private void launchGame(Button next, LinearLayout difficultyBlock, LinearLayout cardsLeftBlock, LinearLayout textBlockforCards, TextView maxsize) {
         createAndShuffleDeck(deckAutoma, difficulty);
         next.setVisibility(View.VISIBLE);
         difficultyBlock.setVisibility(View.GONE);
         textBlockforCards.setVisibility(View.VISIBLE);
+        String rules = "\"Brisco\" the AUTOMA :\n\n";
+        switch (difficulty) {
+            case 0:
+                rules += easyRules.getText().toString();
+                break;
+            case 1:
+                rules += normalRules.getText().toString();
+                break;
+            case 2:
+                rules += hardRules.getText().toString();
+                break;
+        }
+        cardText.setText(rules);
     }
 
     private void createAndShuffleDeck(ArrayList<String> deckAutoma, int cardsToRemove) {
