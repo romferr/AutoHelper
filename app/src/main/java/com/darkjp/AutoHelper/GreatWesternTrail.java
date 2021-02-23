@@ -1,5 +1,6 @@
 package com.darkjp.AutoHelper;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -51,71 +52,68 @@ public class GreatWesternTrail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_great_western_trail);
 
-        if (savedInstanceState == null) {
-            cardsLeftBlock = (LinearLayout) findViewById(R.id.cardsLeftBlock);
-            difficultyBlock = (LinearLayout) findViewById(R.id.difficultyBox);
-            textBlockforCards = (LinearLayout) findViewById(R.id.textBlockforCards);
+        cardsLeftBlock = (LinearLayout) findViewById(R.id.cardsLeftBlock);
+        difficultyBlock = (LinearLayout) findViewById(R.id.difficultyBox);
+        textBlockforCards = (LinearLayout) findViewById(R.id.textBlockforCards);
 
-            next = (Button) findViewById(R.id.next);
-            easyMode = (Button) findViewById(R.id.easyMode);
-            normalMode = (Button) findViewById(R.id.normalMode);
-            hardMode = (Button) findViewById(R.id.hardMode);
-            easyRules = (TextView) findViewById(R.id.easyRules);
-            normalRules = (TextView) findViewById(R.id.normalRules);
-            hardRules = (TextView) findViewById(R.id.hardRules);
+        next = (Button) findViewById(R.id.next);
+        easyMode = (Button) findViewById(R.id.easyMode);
+        normalMode = (Button) findViewById(R.id.normalMode);
+        hardMode = (Button) findViewById(R.id.hardMode);
+        easyRules = (TextView) findViewById(R.id.easyRules);
+        normalRules = (TextView) findViewById(R.id.normalRules);
+        hardRules = (TextView) findViewById(R.id.hardRules);
 
-            cardText = (TextView) findViewById(R.id.cardText);
-            cardLeft = (TextView) findViewById(R.id.cardLeft);
-            maxsize = (TextView) findViewById(R.id.maxsize);
-            deckAutoma = new ArrayList<>();
+        cardText = (TextView) findViewById(R.id.cardText);
+        cardLeft = (TextView) findViewById(R.id.cardLeft);
+        maxsize = (TextView) findViewById(R.id.maxsize);
+        deckAutoma = new ArrayList<>();
 
-            easyMode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    difficulty = 0;
-                    launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
+        easyMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                difficulty = 0;
+                launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
 
+            }
+        });
+        normalMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                difficulty = 1;
+                launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
+            }
+        });
+        hardMode.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                difficulty = 2;
+                launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
+            }
+        });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!party) {
+                    cardsLeftBlock.setVisibility(View.VISIBLE);
+                    cardLeft.setText(" " + deckAutoma.size());
+                    maxsize.setText(" /" + (16 - difficulty));
+                    next.setText("Next Turn");
+                    party = true;
                 }
-            });
-            normalMode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    difficulty = 1;
-                    launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
-                }
-            });
-            hardMode.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    difficulty = 2;
-                    launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
-                }
-            });
 
-
-            next.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (!party) {
-                        cardsLeftBlock.setVisibility(View.VISIBLE);
-                        cardLeft.setText(" " + deckAutoma.size());
-                        maxsize.setText(" /" + (16 - difficulty));
-                        next.setText("Next Turn");
-                        party = true;
-                    }
-
-                    if (deckAutoma.size() == 0) {
-                        createAndShuffleDeck(deckAutoma, difficulty);
-                        Toast.makeText(getBaseContext(), "Automat's deck is shuffled", Toast.LENGTH_SHORT).show();
-                    }
-                    Random rand = new Random();
-                    index = rand.nextInt(deckAutoma.size());
-                    cardLeft.setText(String.valueOf(deckAutoma.size() - 1));
-                    cardText.setText(deckAutoma.get(index));
-                    deckAutoma.remove(index);
+                if (deckAutoma.size() == 0) {
+                    createAndShuffleDeck(deckAutoma, difficulty);
+                    Toast.makeText(getBaseContext(), "Automat's deck is shuffled", Toast.LENGTH_SHORT).show();
                 }
-            });
-        }
+                Random rand = new Random();
+                index = rand.nextInt(deckAutoma.size());
+                cardLeft.setText(String.valueOf(deckAutoma.size() - 1));
+                cardText.setText(deckAutoma.get(index));
+                deckAutoma.remove(index);
+            }
+        });
     }
 
     //TODO
