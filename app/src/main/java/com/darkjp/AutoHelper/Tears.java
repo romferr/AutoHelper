@@ -15,12 +15,12 @@ public class Tears extends AppCompatActivity {
     Button start, restart;
     int round = 0;
     boolean party = false;
-    int easyValues[] = {-1, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5};
-    int normalValues[] = {-1, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5};
-    int hardValues[] = {-1, -1, 0, 1, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    int heroValues[] = {0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    int epicValues[] = {0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    int kingValues[] = {1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int easyValues[] = {0, -1, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5};
+    int normalValues[] = {0, -1, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5};
+    int hardValues[] = {0, -1, -1, 0, 1, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int heroValues[] = {0, 0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int epicValues[] = {0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int kingValues[] = {0, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,7 @@ public class Tears extends AppCompatActivity {
         public void onClick(View view) {
             round++;
             tourNumber.setText(String.valueOf(round));
-            if (round >= 1 && round < easyValues.length) {
+            if (round >= 0 && round < easyValues.length) {
                 easyRessource.setText(String.valueOf(easyValues[round]));
                 normalRessource.setText(String.valueOf(normalValues[round]));
                 hardRessource.setText(String.valueOf(hardValues[round]));
@@ -91,7 +91,7 @@ public class Tears extends AppCompatActivity {
         // Restore state members from saved instance
         round = savedInstanceState.getInt("round");
         party = savedInstanceState.getBoolean("party");
-        if (round > 0 && round < 21) {
+        if (round >= 0 && round < 21) {
             tourNumber.setText(String.valueOf(round));
             easyRessource.setText(String.valueOf(easyValues[round]));
             normalRessource.setText(String.valueOf(normalValues[round]));
@@ -99,7 +99,7 @@ public class Tears extends AppCompatActivity {
             heroRessource.setText(String.valueOf(heroValues[round]));
             epicRessource.setText(String.valueOf(epicValues[round]));
             kingRessource.setText(String.valueOf(kingValues[round]));
-        } else if (round >= 21) {
+        } else {
             tourNumber.setText(String.valueOf(round));
             easyRessource.setText(String.valueOf(5));
             normalRessource.setText(String.valueOf(5));
@@ -107,13 +107,6 @@ public class Tears extends AppCompatActivity {
             heroRessource.setText(String.valueOf(5));
             epicRessource.setText(String.valueOf(5));
             kingRessource.setText(String.valueOf(5));
-        } else {
-            easyRessource.setText("");
-            normalRessource.setText("No draft this turn");
-            hardRessource.setText("");
-            heroRessource.setText("");
-            epicRessource.setText("");
-            kingRessource.setText("");
         }
 
     }
