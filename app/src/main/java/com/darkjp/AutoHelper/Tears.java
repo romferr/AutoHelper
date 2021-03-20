@@ -15,12 +15,12 @@ public class Tears extends AppCompatActivity {
     Button start, restart;
     int round = 0;
     boolean party = false;
-    int easyValues[] = {0, -1, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5};
-    int normalValues[] = {0, -1, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5};
-    int hardValues[] = {0, -1, -1, 0, 1, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    int heroValues[] = {0, 0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    int epicValues[] = {0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
-    int kingValues[] = {0, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int easyValues[] = {-1, -1, -1, -1, 0, 0, 0, 1, 1, 1, 2, 2, 2, 3, 3, 3, 4, 4, 4, 5};
+    int normalValues[] = {-1, -1, -1, 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 5, 5, 5, 5, 5};
+    int hardValues[] = {-1, -1, 0, 1, 1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int heroValues[] = {0, 0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int epicValues[] = {0, 1, 2, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
+    int kingValues[] = {1, 2, 3, 3, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,19 +42,7 @@ public class Tears extends AppCompatActivity {
         public void onClick(View view) {
             round++;
             tourNumber.setText(String.valueOf(round));
-            if (!party) {
-                party = true;
-                buttonVisibility(view, restart, party);
-                start.setText("next turn");
-                easyRessource.setText("");
-                normalRessource.setText("No draft for easy, normal and hard");
-                hardRessource.setText("");
-                heroRessource.setText("0");
-                epicRessource.setText("0");
-                kingRessource.setText("1");
-                Toast.makeText(view.getContext(), "Good Luck and have fun", Toast.LENGTH_SHORT).show();
-            }
-            if (round > 1 && round < easyValues.length) {
+            if (round >= 1 && round < easyValues.length) {
                 easyRessource.setText(String.valueOf(easyValues[round]));
                 normalRessource.setText(String.valueOf(normalValues[round]));
                 hardRessource.setText(String.valueOf(hardValues[round]));

@@ -2,16 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="#DADCBE"
     tools:context=".Tears">
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="MissingConstraints">
 
         <ImageView
@@ -20,23 +20,22 @@
             android:layout_height="220dp"
             app:srcCompat="@drawable/tearstoomanymothers" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="wrap_content"
-            android:layout_height="6sp"
-            android:layout_marginTop="213dp"
-            android:background="?android:attr/listDivider"
-            app:layout_constraintEnd_toEndOf="parent" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="795dp"
+        android:layout_height="1057dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <LinearLayout
-            android:id="@+id/roundBlock"
-            android:layout_width="match_parent"
-            android:layout_height="134dp"
-            android:layout_alignParentTop="true"
-            android:layout_marginTop="222dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/TourLabel"
@@ -44,12 +43,21 @@
                 android:layout_height="42dp"
                 android:background="@drawable/parchemin"
                 android:fontFamily="@font/almendra_sc"
-                android:text="Round"
+                android:text="@string/round"
                 android:textAlignment="center"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="#000000"
                 android:textSize="36sp"
                 android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal|fill_horizontal|left|center_vertical"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tourNumber"
@@ -57,116 +65,97 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/almendra_sc"
                 android:textColor="#000000"
-                android:textSize="36sp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:textSize="36sp" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/ressourcesBlock"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/easyRessource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/almendra_sc"
+                android:text="@string/easy"
+                android:textAlignment="center"
+                android:textColor="#2C6727"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/normalRessource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/almendra_sc"
+                android:paddingHorizontal="60dp"
+                android:text="@string/normal"
+                android:textAlignment="center"
+                android:textColor="#FF9800"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/hardRessource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/almendra_sc"
+                android:text="@string/hard"
+                android:textAlignment="center"
+                android:textColor="#C8362B"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/roundBlock"
-            android:layout_alignParentBottom="true"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="150dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
             android:gravity="center"
-            android:orientation="vertical"
-            android:paddingBottom="150dp">
+            android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
+            <TextView
+                android:id="@+id/heroRessource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/almendra_sc"
+                android:text="Hero"
+                android:textAlignment="center"
+                android:textColor="#9C27B0"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/easyRessource"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almendra_sc"
-                    android:text="Easy"
-                    android:textAlignment="center"
-                    android:textColor="#2C6727"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
+            <TextView
+                android:id="@+id/epicRessource"
+                android:layout_width="86dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/almendra_sc"
+                android:text="Epic"
+                android:textAlignment="center"
+                android:textColor="#9C27B0"
+                android:textSize="30sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/normalRessource"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almendra_sc"
-                    android:paddingHorizontal="60dp"
-                    android:text="Normal"
-                    android:textAlignment="center"
-                    android:textColor="#FF9800"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/startButton" />
-
-                <TextView
-                    android:id="@+id/hardRessource"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almendra_sc"
-                    android:text="Hard"
-                    android:textAlignment="center"
-                    android:textColor="#C8362B"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/heroRessource"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almendra_sc"
-                    android:text="Hero"
-                    android:textAlignment="center"
-                    android:textColor="#9C27B0"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/epicRessource"
-                    android:layout_width="96dp"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almendra_sc"
-                    android:text="Epic"
-                    android:textAlignment="center"
-                    android:textColor="#9C27B0"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/kingRessource"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/almendra_sc"
-                    android:text="King"
-                    android:textAlignment="center"
-                    android:textColor="#673AB7"
-                    android:textSize="30sp"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
+            <TextView
+                android:id="@+id/kingRessource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/almendra_sc"
+                android:text="King"
+                android:textAlignment="center"
+                android:textColor="#673AB7"
+                android:textSize="30sp"
+                android:textStyle="bold" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/buttonBlock"
             android:layout_width="match_parent"
-            android:layout_height="73dp"
-            android:layout_above="@+id/ressourcesBlock"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="136dp"
+            android:layout_height="71dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_horizontal|fill_horizontal"
             android:orientation="vertical">
 
             <Button
@@ -182,41 +171,26 @@
                 android:shadowColor="#000000"
                 android:shadowDx="0.6"
                 android:shadowRadius="0.8"
-                android:text="Start"
+                android:text="@string/start"
                 android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
+
         </LinearLayout>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="310dp"
-            android:layout_height="73dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginStart="41dp"
-            android:layout_marginTop="-32dp"
-            android:layout_marginEnd="41dp"
-            android:layout_marginBottom="61dp">
+        <Button
+            android:id="@+id/restartButton"
+            android:layout_width="47dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/ic_baseline_settings_backup_restore_24"
+            android:backgroundTint="#000000"
+            android:foreground="@drawable/ic_baseline_settings_backup_restore_24"
+            android:textColor="#000000"
+            android:visibility="visible" />
 
-
-            <Button
-                android:id="@+id/restartButton"
-                android:layout_width="59dp"
-                android:layout_height="70dp"
-                android:background="@drawable/ic_baseline_settings_backup_restore_24"
-                android:backgroundTint="#000000"
-                android:foreground="@drawable/ic_baseline_settings_backup_restore_24"
-                android:textColor="#000000"
-                android:visibility="gone"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </RelativeLayout>
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
