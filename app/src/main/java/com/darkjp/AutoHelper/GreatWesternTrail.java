@@ -73,7 +73,7 @@ public class GreatWesternTrail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 difficulty = 0;
-                launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
+                launchGame(next, difficultyBlock, cardsLeftBlock, maxsize);
 
             }
         });
@@ -81,14 +81,14 @@ public class GreatWesternTrail extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 difficulty = 1;
-                launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
+                launchGame(next, difficultyBlock, cardsLeftBlock, maxsize);
             }
         });
         hardMode.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 difficulty = 2;
-                launchGame(next, difficultyBlock, cardsLeftBlock, textBlockforCards, maxsize);
+                launchGame(next, difficultyBlock, cardsLeftBlock, maxsize);
             }
         });
 
@@ -139,7 +139,6 @@ public class GreatWesternTrail extends AppCompatActivity {
 
         next.setVisibility(View.VISIBLE);
         difficultyBlock.setVisibility(View.GONE);
-        textBlockforCards.setVisibility(View.VISIBLE);
         cardsLeftBlock.setVisibility(View.VISIBLE);
 
         cardLeft.setText(String.valueOf(deckAutoma.size()));
@@ -150,11 +149,11 @@ public class GreatWesternTrail extends AppCompatActivity {
 
     }
 
-    private void launchGame(Button next, LinearLayout difficultyBlock, LinearLayout cardsLeftBlock, LinearLayout textBlockforCards, TextView maxsize) {
+    private void launchGame(Button next, LinearLayout difficultyBlock, LinearLayout cardsLeftBlock, TextView maxsize) {
         createAndShuffleDeck(deckAutoma, difficulty);
         next.setVisibility(View.VISIBLE);
         difficultyBlock.setVisibility(View.GONE);
-        textBlockforCards.setVisibility(View.VISIBLE);
+        cardText.setVisibility(View.VISIBLE);
         String rules = "\"Brisco\" the AUTOMA :\n\n";
         switch (difficulty) {
             case 0:

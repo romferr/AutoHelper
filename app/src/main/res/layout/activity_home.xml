@@ -6,28 +6,25 @@
     android:layout_height="match_parent"
     tools:context=".Home">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center_horizontal|center_vertical"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <ImageView
+        android:id="@+id/tearsToManyMothers"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitCenter"
+        android:scaleX="0.9"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/tearstomanymothers" />
 
-        <ImageView
-            android:id="@+id/tearsToManyMothers"
-            android:layout_width="wrap_content"
-            android:layout_height="210dp"
-            app:srcCompat="@drawable/tearstomanymothers" />
-
-        <ImageView
-            android:id="@+id/greatWesternTrail"
-            android:layout_width="wrap_content"
-            android:layout_height="210dp"
-            android:padding="5dp"
-            app:srcCompat="@drawable/gwt" />
-    </LinearLayout>
+    <ImageView
+        android:id="@+id/greatWesternTrail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:scaleX="0.9"
+        app:layout_constraintTop_toBottomOf="@+id/tearsToManyMothers"
+        app:srcCompat="@drawable/gwt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
