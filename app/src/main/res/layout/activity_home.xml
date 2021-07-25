@@ -10,8 +10,11 @@
         android:id="@+id/tearsToManyMothers"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="63dp"
+        android:contentDescription="@string/_1066_automalauncherimg"
         android:scaleType="fitCenter"
         android:scaleX="0.9"
+        app:layout_constraintBottom_toTopOf="@+id/greatWesternTrail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -28,6 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tearsToManyMothers"
-        app:srcCompat="@drawable/gwt" />
+        app:srcCompat="@drawable/gwt"
+        android:contentDescription="@string/gwt_automalauncherimg"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
